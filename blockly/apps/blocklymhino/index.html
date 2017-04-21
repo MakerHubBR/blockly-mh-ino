@@ -1,0 +1,430 @@
+<html manifest=node.manifest>
+<head>
+  <meta charset="utf-8">
+  <title>MakerHub | blockly-mh-ino</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="http://makerhub.com.br/wp-content/uploads/favicon-1.png" />
+  <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+  <script type="text/javascript" src="../../blockly_compressed.js"></script>
+  <script type="text/javascript" src="../../blocks_compressed.js"></script>
+  <script type="text/javascript" src="../../arduino_compressed.js"></script>
+  <script type="text/javascript" src="Blob.js"></script>
+  <script type="text/javascript" src="spin.js"></script>
+  <script type="text/javascript" src="FileSaver.min.js"></script>
+  <script type="text/javascript" src="blockly_helper.js"></script>
+  <script src="code.js"></script>
+</head>
+<body>
+  <table height="100%" width="100%">
+    <tr>
+      <td>
+        <a href="http://makerhub.com.br/?ref=blockly-mh-ino" target="window"><img style="float: left;" src="logo_makerhub.png" height="80"/></a>
+        <br><h1><a href="https://github.com/MakerHubBR/blockly-mh-ino/" target="window"><i class="fa fa-github fa-lg"></i> blockly-mh-ino</a> - Programe Arduino e o <a href="http://makerhub.com.br/mh001/" target="window">Kit mh001</a> por Blocos</h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu" title="Idioma dos Blocos"></select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon">Blocos</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_arduino" class="taboff">Arduino</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_xml" class="taboff">XML</td>
+            <td class="tabmax">
+              <button type="button" onclick="uploadClick()" title="Upload"><i class="fa fa-arrow-right fa-lg"></i></button>
+              <!-- <button type="button" onclick="resetClick()">Reset</button> -->
+              <button onclick="discard()" title="Limpar Tudo"><i class="fa fa-trash-o fa-lg"></i></button>
+              <button onclick="saveCode()" title="Salvar Código .ino"><i class="fa fa-file-text-o fa-lg"></i></button>
+              <button onclick="save()" title="Salvar Blocos"><i class="fa fa-floppy-o fa-lg"></i></button>
+              <button id="fakeload" title="Abrir Blocos"><i class="fa fa-folder-open-o fa-lg"></i></button>
+              <input type="file" accept="text/xml" id="load" style="display: none;"/>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area"></td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_arduino" class="content"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+
+  <xml id="toolbox" style="display: none">
+    <!-- Lógica -->
+    <category name="Lógica" colour="210">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_boolean2"></block>
+      <block type="logic_ternary"></block>
+    </category>
+
+    <!-- Laços -->
+    <category name="Laços" colour="120">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_flow_statements"></block>
+    </category>
+
+    <!-- Matemática -->
+    <category name="Matemática" colour="240">
+      <block type="math_number"></block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">9</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_map">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">512</field>
+          </shadow>
+        </value>
+        <value name="FROMLOW">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="FROMHIGH">
+          <shadow type="math_number">
+            <field name="NUM">1023</field>
+          </shadow>
+        </value>
+        <value name="TOLOW">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="TOHIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+
+    <!-- Texto -->
+    <category name="Texto" colour="160">
+      <block type="text"></block>
+      <block type="text_format">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_format_decimal">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+          <field name="DECIMALS">4</field>
+        </value>
+      </block>
+      <block type="text_join"></block>
+      <block type="text_replace">
+        <value name="FROM">
+          <shadow type="text">
+            <field name="TEXT">a</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="text">
+            <field name="TEXT">b</field>
+          </shadow>
+        </value>
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_length"></block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+
+    <!-- Variáveis -->
+    <category name="Variáveis" colour="330" custom="VARIABLE"></category>
+
+    <!-- Funções -->
+    <category name="Funções" colour="290" custom="PROCEDURE"></category>
+
+    <!-- Separador -->
+    <sep></sep>
+
+    <!-- Arduino -->
+
+    <!-- IO -->
+    <category name="Input/Output" colour="230">
+      <block type="io_digital_read"></block>
+      <block type="io_digital_read2">
+        <value name="PIN">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="io_digital_write"></block>
+      <block type="io_digital_write2">
+        <value name="STAT">
+          <shadow type="logic_boolean2">
+            <filed name="BOOL">false</filed>
+          </shadow>
+        </value>
+        <value name="PIN">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="io_analog_read"></block>
+      <block type="io_analog_read2">
+        <value name="PIN">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="io_analog_write">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="io_analog_write2">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="PIN">
+          <shadow type="math_number">
+            <field name="NUM">3</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+
+    <!-- Tempo -->
+    <category name="Tempo" colour="110">
+      <block type="time_delay">
+        <value name="DELAY_TIME_MILI">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="time_delaymicros">
+        <value name="DELAY_TIME_MICRO">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="time_millis"></block>
+      <block type="time_micros"></block>
+      <block type="time_runeveryms">
+        <value name="MS">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="infinite_loop"></block>
+    </category>
+
+    <!-- Serial -->
+    <category name="Serial" colour="170">
+      <block type="serial_init">
+        <field name="BAUD">9600</field>
+      </block>
+      <block type="serial_timeout">
+        <value name="MS">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="serial_print">
+        <value name="STRINGOUTPUT">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="serial_write_byte">
+        <value name="BYTE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="serial_read_available"></block>
+      <block type="serial_read_string"></block>
+      <block type="serial_read_byte"></block>
+      <block type="serial_read_float"></block>
+    </category>
+
+    <!-- EEPROM -->
+    <category name="EEPROM" colour="60">
+      <block type="eeprom_read_var">
+        <value name="ADDR">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="eeprom_write_var">
+        <value name="VAL">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="ADDR">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+
+    <!-- Separador -->
+    <sep></sep>
+
+    <!-- MakerHub -->
+
+    <!-- mh001 -->
+    <category name="Kit mh001" colour="280"></category>
+
+  </xml>
+
+  <xml id="startBlocks" style="display: none">
+    <block type="arduino_setup" editable="false" x="13" y="13"></block>
+    <block type="arduino_loop"  editable="false" x="13" y="138"></block>
+  </xml>
+</body>
+</html>

@@ -1,0 +1,290 @@
+blockly-mh-ino
+=======================
+
+0.1 21/04/2017
+---------------------
+Autor: @krebyy
+
+Alterações iniciais para o projeto **blockly-mh-ino**
+
+Modificações:
+* Atualizado o blockly para o commit do dia 17/04/2017 - google@98e30c8c571446ecc4ffc348bcde93142fe1fb75
+* Pequenas alterações no 'arduino_web_server.py' para funcionar com o blockly-mh-ino
+* Remoção dos blocos: Servo, Grove Analog, Grove, Grove LCD e Grove Motor
+* Alteração na organização da toolbox
+* Tradução para o português brasileiro; seletor de idioma dos blocos
+* Adicionados alguns blocos genéricos e seus 'generators'
+* O arquivo 'index.html' foi melhor organizado, criando o 'style.css' e o 'code.js'
+* Adicionado 'syntax-highlighting' para a aba Arduino
+
+Fix:
+* Nenhum
+
+Todo:
+* Blocos do Kit mh001
+* Seletor para carregar exemplos
+* Tratamento dos tipos (int, float...) das variáveis
+
+Considerações gerais:
+* Local do repositório: https://github.com/MakerHubBR/blockly-mh-ino/
+* Hospedado para uso via web browser em: http://makerhub.com.br/blockly-mh-ino/blockly/apps/blocklymhino/
+
+
+### Este trabalho foi originado de [BlocklyDuino](https://github.com/BlocklyDuino/BlocklyDuino/) - Conteúdo do trabalho original:
+- - - -
+BlocklyDuino
+=======================
+
+1.4 2015/8/4
+---------------------
+code name: The Simpsons
+
+Feature:
+* python server integrate with Arduino IDE console
+* Upload code to Arduino directly on windows, linux, mac
+* Added support for Arduino tone/notone
+* Add while loop block
+* Can save arduino code locally
+
+Fix:
+* analogWrite works on PWM pins, not analog pins
+* serial print to next line
+
+Project maintainance:
+* Move domain to https://github.com/BlocklyDuino/BlocklyDuino/
+* Self hosting BlocklyDuino at http://blocklyduino.github.io/BlocklyDuino/blockly/apps/blocklyduino/
+
+Credit: Arachnid, stevoleeto, carlosperate, gasolin
+
+
+1.3 2015/6/19
+---------------------
+code name: TOWN
+
+Feature:
+* Grid background
+* prefill default combined blocks
+
+Fix:
+* update Blockly to Mar 12
+* Fix recursive creation of ino_project subdirectories
+* fix server upload function
+* fix LED module
+
+Credit: gasolin, fraser, gumbypp
+
+
+1.2 2015/2/25
+------------------
+code name: Fabuland
+
+Feature:
+* update Blockly to latest (two year gap), can reuse l10n and new blockly features.
+
+Change:
+* enable frameless code editor (Chrome now works locally)
+
+Fix:
+* improve digital write readness
+
+Credit: fraser, gasolin
+
+
+1.1 2015/2/8
+------------------
+code name: Dinosaurs
+
+Feature:
+* python server to upload code to Arduino directly (only work on Linux and Mac)
+
+Change:
+* separate lcd include statement
+* update blockly till r546
+* rename package demos to apps
+* replaced to new Blob API
+
+Credit: gumbypp, gasolin, mjhoy, meln1k, Grahack
+
+
+1.0 2012/12/11
+------------------
+code name: Mindstorms
+
+Feature:
+
+* add procedure support with return and logic null blocks, contribute back to blockly
+* add blocks:
+  Grove Ultrasonic Ranger
+  Grove Motor Shield
+  Grove Thumb JoyStick
+  Grove Chained RGB LED
+
+Change:
+* clean blocks internal
+* update blockly till r518, pretty print xml
+* change procedure return to ifreturn block via blockly
+
+Fix:
+* names with object
+* variable dropdown with object
+
+Credit: gasolin, neil fraser(blockly)
+
+
+0.9 2012/11/11
+------------------
+code name: TECHNIC
+
+Refactor blocks, rearrange import blocks and blocks with type checking
+
+Feature:
+
+* add text blocks
+* add blocks:
+  Grove serial lcd effect
+  Grove Sound Sensor
+  Grove PIR Motion sensor
+  Grove Line finder
+
+Change:
+
+* separate Grove category into Grove(digital), Grove Analog, and Grove LCD
+* make LCD allow to input text block
+* update blockly till r504, support checkbox
+* remove jquery dependency by implement ajax via XMLHttpRequest
+* rearrange import blocks
+
+Fix:
+* appcache support
+
+Credit: gasolin
+
+
+0.8 2012/10/31
+------------------
+code name: DUPLO
+
+make editor more friendly
+
+Feature:
+
+* generate arduino code in textarea, easier to copy source
+* auto focus to arduino code area, can use ctrl+a to select correct source
+* load source via url param in same site with such "url=xxx" syntax
+* include 2 examples
+* upload potentiometer control servo video http://www.youtube.com/watch?v=u2Fp0KpWxik
+* application cache block images and jquery
+* add Grove LCD print, Grove LCD power block
+
+Change:
+
+* call profile params via 'profile.default.digital' instead of 'profile.arduino.digital'
+* rename Potentiometer block to Rotary Angle block
+* update blockly till r496, move core js into core folder
+* move arduino language generator to top level generator/ folder
+* reasonable default) change default delay time from 0 to 1000
+
+Credit: gasolin
+
+
+0.7 2012/10/18
+------------------
+code name: SPACE
+
+refine bootstraping process
+
+Feature:
+
+* promotion video http://www.youtube.com/watch?v=_swiyXcUvNY
+* bootstraping sample blocks and document to easily custom blocks.
+
+Change:
+
+* update blockly till 10/18
+* from blockly) Move include section always at top of the source file
+* move delay block to Control blocks Panel
+* move map block to Math blocks panel
+
+fix:
+
+* fix servo move block cascade input issue
+
+Credit: gasolin
+
+
+0.6 2012/10/14
+-----------------
+code name: CASTLE
+
+make BlocklyDuino public to github
+
+Feature:
+
+* code on github
+* add grove_temporature_sensor block
+* add Serial print block
+
+Change:
+
+* map function can specify the max range value
+
+Refactor:
+
+Fix:
+
+* fix several functions to able to assigned to variables
+
+Credit: gasolin
+
+
+0.5 2012/10/11
+-----------------
+code name: CREATOR
+
+support int variables and new blockly syntax
+
+Feature:
+
+* support variable declare statement
+* support type declaration for strong type language
+  * (currently only support int type)
+* can restore blocks
+* add for statement
+
+Refactor:
+
+* add board profiles to support different board with ports(current arduino standard-compatible board only)
+* support new blockly syntax
+* change image size to 64*64
+
+Credit: gasolin
+
+
+0.4 2012/10/6
+-----------------
+code name: CITY
+
+First version with minimum function sets.
+
+Feature:
+
+* Compact Digital/Analog Read/Write syntax
+* Auto setup pinMode
+* delay and map function
+* 2 Standard blocks: Build-in LED, Servo
+* 6 Grove blocks: LED, Potentiometer, Tilt switch, Piezo Buzzer, Relay
+
+Credit: gasolin
+
+
+Code name convention
+------------------------
+BlocklyDuino code names follows lego themes http://en.wikipedia.org/wiki/Lego
+
+License
+-----------------
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
