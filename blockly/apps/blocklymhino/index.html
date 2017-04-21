@@ -1,6 +1,15 @@
-<html manifest=node.manifest>
+<html manifest=node.manifest prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="O blockly-mh-ino é um editor de códigos gráfico (blocos) para a plataforma Arduino e para os kits e produtos do Makerhub."/>
+  <meta name="robots" content="noodp"/>
+  <link rel="canonical" href="http://makerhub.com.br/blockly-mh-ino/blockly/apps/blocklymhino/" />
+  <meta property="og:title" content="Programe Arduino por Blocos" />
+  <meta property="og:description" content="O blockly-mh-ino é um editor de códigos gráfico (blocos) para a plataforma Arduino e para os kits e produtos do Makerhub." />
+  <meta property="og:url" content="http://makerhub.com.br/blockly-mh-ino/blockly/apps/blocklymhino/" />
+  <meta property="og:site_name" content="MakerHub" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://makerhub.com.br/blockly-mh-ino/blockly/apps/blocklymhino/blockly-mh-ino-preview.png" />
   <title>MakerHub | blockly-mh-ino</title>
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="http://makerhub.com.br/wp-content/uploads/favicon-1.png" />
@@ -15,11 +24,22 @@
   <script src="code.js"></script>
 </head>
 <body>
+  <!-- google analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  	ga('create', 'UA-92057824-1', 'auto');
+  	ga('send', 'pageview');
+  </script>
+
+  <!-- Corpo da página -->
   <table height="100%" width="100%">
     <tr>
       <td>
-        <a href="http://makerhub.com.br/?ref=blockly-mh-ino" target="window"><img style="float: left;" src="logo_makerhub.png" height="80"/></a>
-        <br><h1><a href="https://github.com/MakerHubBR/blockly-mh-ino/" target="window"><i class="fa fa-github fa-lg"></i> blockly-mh-ino</a> - Programe Arduino e o <a href="http://makerhub.com.br/mh001/" target="window">Kit mh001</a> por Blocos</h1>
+        <a href="http://makerhub.com.br/?ref=blockly-mh-ino" target="_blank"><img style="float: left;" src="logo_makerhub.png" height="80"/></a>
+        <br><h1><a href="https://github.com/MakerHubBR/blockly-mh-ino/" target="_blank"><i class="fa fa-github fa-lg"></i> blockly-mh-ino</a> - Programe Arduino e o <a href="http://makerhub.com.br/mh001/" target="_blank">Kit mh001</a> por Blocos</h1>
       </td>
       <td class="farSide">
         <select id="languageMenu" title="Idioma dos Blocos"></select>
@@ -42,6 +62,7 @@
               <button onclick="save()" title="Salvar Blocos"><i class="fa fa-floppy-o fa-lg"></i></button>
               <button id="fakeload" title="Abrir Blocos"><i class="fa fa-folder-open-o fa-lg"></i></button>
               <input type="file" accept="text/xml" id="load" style="display: none;"/>
+              <a href="https://github.com/MakerHubBR/blockly-mh-ino#blockly-mh-ino" target="_blank"><button title="Ajuda"><i class="fa fa-question fa-lg"></i></button></a>
             </td>
           </tr>
         </table>
@@ -49,6 +70,13 @@
     </tr>
     <tr>
       <td height="99%" colspan=2 id="content_area"></td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <div class="footer">
+          <p style="text-align: center;"><a href="http://makerhub.com.br/contato/" target="_blank">&copy; 2017 MakerHub | Editor blockly-mh-ino</a></p>
+        </div>
+      </td>
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
