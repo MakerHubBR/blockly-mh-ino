@@ -63,7 +63,7 @@ Blockly.Arduino['procedures_defreturn'] = function(block) {
   if (returnValue) {
     returnValue = '  return ' + returnValue + ';\n';
   }
-  var returnType = returnValue ? 'dynamic' : 'void';
+  var returnType = returnValue ? 'float' : 'void';
   var args = [];
   for (var i = 0; i < block.arguments_.length; i++) {
     args[i] = Blockly.Arduino.variableDB_.getName(block.arguments_[i],
