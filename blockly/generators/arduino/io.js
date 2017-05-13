@@ -36,9 +36,9 @@ Blockly.Arduino.io_digital_write = function() {
 
 Blockly.Arduino.io_digital_write2 = function() {
   var dropdown_pin=Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
-	var dropdown_stat=Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC) || 'false';
+  var value_stat=Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC) || 'false';
   Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
-	var code = 'digitalWrite(' + dropdown_pin + ', ' + (dropdown_stat ? "HIGH" : "LOW") + ');\n'
+  var code = 'digitalWrite(' + dropdown_pin + ', ' + value_stat + ');\n'
   return code;
 };
 
