@@ -58,6 +58,7 @@ Blockly.Msg.TEXT_DECIMALS = "decimal places";
 Blockly.Msg.TEXT_DECIMALS_TOOLTIP = "Specifies the number of decimal places";
 Blockly.Msg.TEXT_FORMAT = "format";
 Blockly.Msg.TEXT_FORMAT_TOOLTIP = "Specifies the number base";
+Blockly.Msg.TEXT_TRIM_OPERATOR = "trim spaces of";
 Blockly.Msg.TIME_MICROS = "us";
 Blockly.Msg.TIME_MILLIS = "ms";
 Blockly.Msg.TIME_RUNEVERYMS = "run every";

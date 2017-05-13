@@ -58,6 +58,7 @@ Blockly.Msg.TEXT_DECIMALS = "casas decimais";
 Blockly.Msg.TEXT_DECIMALS_TOOLTIP = "Especifica o número de casas decimais";
 Blockly.Msg.TEXT_FORMAT = "format";
 Blockly.Msg.TEXT_FORMAT_TOOLTIP = "Especifica a base do número";
+Blockly.Msg.TEXT_TRIM_OPERATOR = "remover espaços de";
 Blockly.Msg.TIME_MICROS = "us";
 Blockly.Msg.TIME_MILLIS = "ms";
 Blockly.Msg.TIME_RUNEVERYMS = "executar a cada";

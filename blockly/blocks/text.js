@@ -361,7 +361,8 @@ Blockly.Blocks['text_trim'] = {
     this.setHelpUrl('https://www.arduino.cc/en/Reference/StringTrim');
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('TEXT')
-        .setCheck('String');
+        .setCheck('String')
+        .appendField(Blockly.Msg.TEXT_TRIM_OPERATOR);
     this.setOutput(true, 'String');
     this.setTooltip(Blockly.Msg.TEXT_TRIM_TOOLTIP);
   }
